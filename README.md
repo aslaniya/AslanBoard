@@ -2,7 +2,7 @@
 
 <p align="center">
 <a href="https://plane.so">
-  <img src="https://media.docs.plane.so/logo/plane_github_readme.png" alt="Plane Logo" width="400">
+  <img src="https://media.docs.plane.so/logo/plane_github_readme.png" alt="AslanBoard Logo" width="400">
 </a>
 </p>
 <p align="center"><b>Modern project management for all teams</b></p>
@@ -18,25 +18,25 @@
     <a href="https://app.plane.so/#gh-light-mode-only" target="_blank">
       <img
         src="https://media.docs.plane.so/GitHub-readme/github-top.webp"
-        alt="Plane Screens"
+        alt="AslanBoard Screens"
         width="100%"
       />
     </a>
 </p>
 
-Meet [Plane](https://plane.so/), an open-source project management tool to track issues, run ~sprints~ cycles, and manage product roadmaps without the chaos of managing the tool itself. 🧘‍♀️
+Meet **AslanBoard**, Aslaniya's fork of [Plane](https://plane.so/). It is an open-source project management tool to track issues, run ~sprints~ cycles, and manage product roadmaps without the chaos of managing the tool itself.
 
-> Plane is evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Forum](https://forum.plane.so) or raise a GitHub issue. We read everything and respond to most.
+> AslanBoard is evolving every day. Your suggestions, ideas, and reported bugs help us immensely. Do not hesitate to join in the conversation on [Forum](https://forum.plane.so) or raise a GitHub issue. We read everything and respond to most.
 
 ## 🚀 Installation
 
-Getting started with Plane is simple. Choose the setup that works best for you:
+Getting started with AslanBoard is simple. Choose the setup that works best for you:
 
 - **Plane Cloud**
   Sign up for a free account on [Plane Cloud](https://app.plane.so)—it's the fastest way to get up and running without worrying about infrastructure.
 
-- **Self-host Plane**
-  Prefer full control over your data and infrastructure? Install and run Plane on your own servers. Follow our detailed [deployment guides](https://developers.plane.so/self-hosting/overview) to get started.
+- **Self-host AslanBoard**
+  Prefer full control over your data and infrastructure? Install and run AslanBoard on your own servers. Follow Plane's detailed [deployment guides](https://developers.plane.so/self-hosting/overview) to get started.
 
 | Installation methods | Docs link                                                                                                                                                                               |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -60,10 +60,10 @@ Getting started with Plane is simple. Choose the setup that works best for you:
   Customize your workflow by creating filters to display only the most relevant issues. Save and share these views with ease.
 
 - **Pages**
-  Capture and organize ideas using Plane Pages, complete with AI capabilities and a rich text editor. Format text, insert images, add hyperlinks, or convert your notes into actionable items.
+  Capture and organize ideas using AslanBoard Pages, complete with AI capabilities and a rich text editor. Format text, insert images, add hyperlinks, or convert your notes into actionable items.
 
 - **Analytics**
-  Access real-time insights across all your Plane data. Visualize trends, remove blockers, and keep your projects moving forward.
+  Access real-time insights across all your AslanBoard data. Visualize trends, remove blockers, and keep your projects moving forward.
 
 ## 🛠️ Local development
 
