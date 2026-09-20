@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
   "Open-source project management tool to manage work items, cycles, and product roadmaps easily";
 export const SITE_KEYWORDS =
   "software development, plan, ship, software, accelerate, code management, release management, project management, work items tracking, agile, scrum, kanban, collaboration";
-export const SITE_URL = "https://plane.aslaniya.com/";
+export const SITE_URL = "https://aslanboard.aslaniya.com/";
 export const TWITTER_USER_NAME = "AslanBoard | Simple, extensible, open-source project management tool.";
 
 // AslanBoard Sites Metadata

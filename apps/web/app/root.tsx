@@ -90,7 +90,7 @@ export const meta: Route.MetaFunction = () => [
     property: "og:description",
     content: "Open-source project management tool to manage work items, cycles, and product roadmaps easily",
   },
-  { property: "og:url", content: "https://plane.aslaniya.com/" },
+  { property: "og:url", content: "https://aslanboard.aslaniya.com/" },
   { property: "og:image", content: ogImage },
   { property: "og:image:width", content: "1200" },
   { property: "og:image:height", content: "630" },
