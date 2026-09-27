@@ -24,6 +24,7 @@ import { getLegendProps } from "../components/legend";
 import { CustomXAxisTick, CustomYAxisTick } from "../components/tick";
 import { CustomTooltip } from "../components/tooltip";
 import { barShapeVariants, DEFAULT_BAR_FILL_COLOR } from "./bar";
+import { cn } from "../../utils";
 
 export const BarChart = React.memo(function BarChart<K extends string, T extends string>(props: TBarChartProps<K, T>) {
   const {
@@ -42,6 +43,7 @@ export const BarChart = React.memo(function BarChart<K extends string, T extends
     customTicks,
     showTooltip = true,
     customTooltipContent,
+    onBarClick,
   } = props;
   // states
   const [activeBar, setActiveBar] = useState<string | null>(null);
@@ -110,13 +112,21 @@ export const BarChart = React.memo(function BarChart<K extends string, T extends
             const node = shapeVariant(shapeProps, bar, stackKeys);
             return React.isValidElement(node) ? node : <>{node}</>;
           }}
-          className="[&_path]:transition-opacity [&_path]:duration-200"
+          className={cn(
+            "[&_path]:transition-opacity [&_path]:duration-200",
+            onBarClick && "[&_path]:cursor-pointer"
+          )}
           onMouseEnter={() => setActiveBar(bar.key)}
           onMouseLeave={() => setActiveBar(null)}
+          onClick={(data: any) => {
+            if (!onBarClick) return;
+            const payload = data?.payload ?? data;
+            if (payload) onBarClick(payload);
+          }}
           fill={getBarColor(data, bar.key)}
         />
       )),
-    [activeLegend, stackKeys, bars, getBarColor, data]
+    [activeLegend, stackKeys, bars, getBarColor, data, onBarClick]
   );
 
   return (

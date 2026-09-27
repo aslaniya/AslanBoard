@@ -5,6 +5,7 @@
  */
 
 import React, { useCallback, useMemo } from "react";
+import { isEmpty } from "lodash-es";
 import { observer } from "mobx-react";
 import { useParams, useSearchParams } from "next/navigation";
 import useSWR from "swr";
@@ -13,8 +14,8 @@ import { ISSUE_DISPLAY_FILTERS_BY_PAGE } from "@plane/constants";
 import { EmptyStateDetailed } from "@plane/propel/empty-state";
 import type { EIssueLayoutTypes } from "@plane/types";
 import { EIssuesStoreType, STATIC_VIEW_TYPES } from "@plane/types";
-// assets
 // components
+import { buildRichFiltersFromRouteParams, hasAnalyticsRouteFilters } from "@/components/analytics/drilldown";
 import { IssuePeekOverview } from "@/components/issues/peek-overview";
 import { WorkspaceActiveLayout } from "@/components/views/helper";
 import { WorkspaceLevelWorkItemFiltersHOC } from "@/components/work-item-filters/filters-hoc/workspace-level";
@@ -41,6 +42,16 @@ export const AllIssueLayoutRoot = observer(function AllIssueLayoutRoot(props: Pr
   const globalViewId = routerGlobalViewId ? routerGlobalViewId.toString() : undefined;
   // search params
   const searchParams = useSearchParams();
+  const routeFiltersKey = searchParams.toString();
+  const routeFilters = useMemo(() => {
+    const filters: { [key: string]: string } = {};
+    searchParams.forEach((value: string, key: string) => {
+      filters[key] = value;
+    });
+    return filters;
+  }, [routeFiltersKey, searchParams]);
+  const routeFilterExpression = useMemo(() => buildRichFiltersFromRouteParams(routeFilters), [routeFilters]);
+  const hasRouteFilters = hasAnalyticsRouteFilters(routeFilters);
   // store hooks
   const {
     issuesFilter: { filters, fetchFilters, updateFilterExpression },
@@ -60,22 +71,19 @@ export const AllIssueLayoutRoot = observer(function AllIssueLayoutRoot(props: Pr
 
     if (!isStaticView && !hasViewDetails) return undefined;
 
+    const baseRichFilters = viewDetails?.rich_filters ?? {};
+    const richFilters = hasRouteFilters && !isEmpty(routeFilterExpression) ? routeFilterExpression : baseRichFilters;
+
     return {
       displayFilters: workItemFilters?.displayFilters,
       displayProperties: workItemFilters?.displayProperties,
       kanbanFilters: workItemFilters?.kanbanFilters,
-      richFilters: viewDetails?.rich_filters ?? {},
+      richFilters,
     };
-  }, [globalViewId, viewDetails, workItemFilters]);
+  }, [globalViewId, viewDetails, workItemFilters, hasRouteFilters, routeFilterExpression]);
 
   // Custom hooks
   useWorkspaceIssueProperties(workspaceSlug);
-
-  // Route filters
-  const routeFilters: { [key: string]: string } = {};
-  searchParams.forEach((value: string, key: string) => {
-    routeFilters[key] = value;
-  });
 
   // Fetch next pages callback
   const fetchNextPages = useCallback(() => {
@@ -93,18 +101,25 @@ export const AllIssueLayoutRoot = observer(function AllIssueLayoutRoot(props: Pr
     { revalidateIfStale: false, revalidateOnFocus: false }
   );
 
-  // Fetch issues
+  // Fetch issues (re-run when drill-down query params change)
   const { isLoading: issuesLoading } = useSWR(
-    workspaceSlug && globalViewId ? `WORKSPACE_GLOBAL_VIEW_ISSUES_${workspaceSlug}_${globalViewId}` : null,
+    workspaceSlug && globalViewId
+      ? `WORKSPACE_GLOBAL_VIEW_ISSUES_${workspaceSlug}_${globalViewId}_${routeFiltersKey}`
+      : null,
     async () => {
       if (workspaceSlug && globalViewId) {
         clear();
         toggleLoading(true);
         await fetchFilters(workspaceSlug, globalViewId);
-        await fetchIssues(workspaceSlug, globalViewId, groupedIssueIds ? "mutation" : "init-loader", {
-          canGroup: false,
-          perPageCount: 100,
-        });
+        if (hasRouteFilters && !isEmpty(routeFilterExpression)) {
+          // Applies rich filters and refetches issues
+          await updateFilterExpression(workspaceSlug, globalViewId, routeFilterExpression);
+        } else {
+          await fetchIssues(workspaceSlug, globalViewId, groupedIssueIds ? "mutation" : "init-loader", {
+            canGroup: false,
+            perPageCount: 100,
+          });
+        }
         toggleLoading(false);
       }
     },
@@ -133,6 +148,7 @@ export const AllIssueLayoutRoot = observer(function AllIssueLayoutRoot(props: Pr
   return (
     <IssuesStoreContext.Provider value={EIssuesStoreType.GLOBAL}>
       <WorkspaceLevelWorkItemFiltersHOC
+        key={`${globalViewId}-${routeFiltersKey}`}
         enableSaveView
         saveViewOptions={{
           label: "Save as",

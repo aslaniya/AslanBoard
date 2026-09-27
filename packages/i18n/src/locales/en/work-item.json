@@ -198,6 +198,13 @@
       "implemented_by": "Implemented By"
     },
     "copy_link": "Copy work item link",
+    "create_branch": {
+      "label": "Create branch",
+      "title": "Create branch",
+      "git_section": "Git create & checkout a new branch",
+      "copy_command": "Copy command",
+      "copied": "Branch command copied to clipboard"
+    },
     "delete": {
       "label": "Delete work item",
       "error": "Error deleting work item"

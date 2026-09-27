@@ -23,6 +23,7 @@ import { useAppRouter } from "@/hooks/use-app-router";
 import { usePlatformOS } from "@/hooks/use-platform-os";
 // local imports
 import { WorkItemDetailQuickActions } from "../issue-layouts/quick-action-dropdowns";
+import { CreateBranchDropdown } from "./create-branch-dropdown";
 import { IssueSubscription } from "./subscription";
 
 type Props = {
@@ -147,6 +148,13 @@ export const IssueDetailQuickActions = observer(function IssueDetailQuickActions
             <IssueSubscription workspaceSlug={workspaceSlug} projectId={projectId} issueId={issueId} />
           )}
           <div className="flex flex-wrap items-center gap-2 text-tertiary">
+            {!issue?.archived_at && (
+              <CreateBranchDropdown
+                projectIdentifier={projectIdentifier}
+                sequenceId={issue?.sequence_id}
+                title={issue?.name}
+              />
+            )}
             <Tooltip label={t("common.actions.copy_link")} disabled={isMobile}>
               <IconButton variant="secondary" size="lg" onClick={handleCopyText} icon={LinkOutline} />
             </Tooltip>
