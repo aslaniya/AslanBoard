@@ -30,6 +30,7 @@ import { useProject } from "@/hooks/store/use-project";
 import { useUser } from "@/hooks/store/user";
 import { usePlatformOS } from "@/hooks/use-platform-os";
 // local imports
+import { CreateBranchDropdown } from "../issue-detail/create-branch-dropdown";
 import { IssueSubscription } from "../issue-detail/subscription";
 import { WorkItemDetailQuickActions } from "../issue-layouts/quick-action-dropdowns";
 import { NameDescriptionUpdateStatus } from "../issue-update-status";
@@ -210,6 +211,14 @@ export const IssuePeekOverviewHeader = observer(function IssuePeekOverviewHeader
         <div className="flex items-center gap-2">
           {currentUser && !isArchived && (
             <IssueSubscription workspaceSlug={workspaceSlug} projectId={projectId} issueId={issueId} />
+          )}
+          {!isArchived && issueDetails && (
+            <CreateBranchDropdown
+              projectIdentifier={projectIdentifier}
+              sequenceId={issueDetails.sequence_id}
+              title={issueDetails.name}
+              disabled={disabled}
+            />
           )}
           <Tooltip label={t("common.actions.copy_link")} disabled={isMobile}>
             <IconButton variant="secondary" size="lg" onClick={handleCopyText} icon={LinkOutline} />

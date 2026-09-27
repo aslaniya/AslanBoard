@@ -18,6 +18,7 @@ import { useAnalytics } from "@/hooks/store/use-analytics";
 // services
 import { AnalyticsService } from "@/services/analytics.service";
 // local imports
+import { getInsightDrilldownHref } from "./drilldown";
 import InsightCard from "./insight-card";
 
 const analyticsService = new AnalyticsService();
@@ -88,14 +89,23 @@ const TotalInsights = observer(function TotalInsights({
           : "grid-cols-2"
       )}
     >
-      {ANALYTICS_INSIGHTS_FIELDS[analyticsType]?.map((item) => (
-        <InsightCard
-          key={`${analyticsType}-${item.key}`}
-          isLoading={isLoading}
-          data={totalInsightsData?.[item.key]}
-          label={getInsightLabel(analyticsType, item, isEpic, t)}
-        />
-      ))}
+      {ANALYTICS_INSIGHTS_FIELDS[analyticsType]?.map((item) => {
+        const href = getInsightDrilldownHref(analyticsType, item.key, {
+          workspaceSlug,
+          selectedProjects,
+          selectedCycle,
+          selectedModule,
+        });
+        return (
+          <InsightCard
+            key={`${analyticsType}-${item.key}`}
+            isLoading={isLoading}
+            data={totalInsightsData?.[item.key]}
+            label={getInsightLabel(analyticsType, item, isEpic, t)}
+            href={href}
+          />
+        );
+      })}
     </div>
   );
 });

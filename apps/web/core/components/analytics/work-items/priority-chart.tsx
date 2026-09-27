@@ -4,7 +4,7 @@
  * See the LICENSE file for details.
  */
 
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import type { ColumnDef, Row, RowData, Table } from "@tanstack/react-table";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
@@ -24,7 +24,9 @@ import { generateExtendedColors, parseChartData } from "@/components/chart/utils
 // hooks
 import { useAnalytics } from "@/hooks/store/use-analytics";
 import { useProjectState } from "@/hooks/store/use-project-state";
+import { useAppRouter } from "@/hooks/use-app-router";
 import { AnalyticsService } from "@/services/analytics.service";
+import { getChartBarDrilldownHref } from "../drilldown";
 import { exportCSV } from "../export";
 import { DataTable } from "../insight-table/data-table";
 import { ChartLoader } from "../loaders";
@@ -57,8 +59,22 @@ const PriorityChart = observer(function PriorityChart(props: Props) {
   const { workspaceStates } = useProjectState();
   const { resolvedTheme } = useTheme();
   // router
+  const router = useAppRouter();
   const params = useParams();
   const workspaceSlug = params.workspaceSlug.toString();
+
+  const handleBarClick = useCallback(
+    (payload: TChartDatum) => {
+      const href = getChartBarDrilldownHref(x_axis, payload?.key, {
+        workspaceSlug,
+        selectedProjects,
+        selectedCycle,
+        selectedModule,
+      });
+      if (href) router.push(href);
+    },
+    [x_axis, workspaceSlug, selectedProjects, selectedCycle, selectedModule, router]
+  );
 
   const { data: priorityChartData, isLoading: priorityChartLoading } = useSWR(
     `customized-insights-chart-${workspaceSlug}-${selectedDuration}-
@@ -220,6 +236,7 @@ const PriorityChart = observer(function PriorityChart(props: Props) {
               offset: -60,
               dx: -26,
             }}
+            onBarClick={handleBarClick}
           />
           <DataTable
             data={parsedData.data}
