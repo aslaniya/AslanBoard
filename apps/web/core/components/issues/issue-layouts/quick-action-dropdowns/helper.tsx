@@ -5,14 +5,15 @@
  */
 
 import { useMemo } from "react";
-import { XCircle, ArchiveRestoreIcon } from "lucide-react";
+import { XCircle, ArchiveRestoreIcon, GitBranch } from "lucide-react";
 // plane imports
 import { useTranslation } from "@plane/i18n";
 import { LinkIcon, CopyIcon, NewTabIcon, EditIcon, ArchiveIcon, TrashIcon } from "@plane/propel/icons";
 import { TOAST_TYPE, setToast } from "@plane/propel/toast";
 import type { EIssuesStoreType, TIssue } from "@plane/types";
 import type { TContextMenuItem } from "@plane/ui";
-import { copyUrlToClipboard, generateWorkItemLink } from "@plane/utils";
+import { copyTextToClipboard, copyUrlToClipboard, generateWorkItemLink } from "@plane/utils";
+import { buildWorkItemBranchName } from "../../issue-detail/create-branch-dropdown";
 import { createCopyMenuWithDuplication } from "./copy-menu-helper";
 
 // Generic helper function to handle optional function calls gracefully
@@ -205,6 +206,30 @@ export const useMenuItemFactory = (props: MenuItemFactoryProps) => {
     action: actionHandlers.handleCopyIssueLink,
   });
 
+  const createCreateBranchMenuItem = (): TContextMenuItem => ({
+    key: "create-branch",
+    title: t("issue.create_branch.label"),
+    icon: GitBranch,
+    action: async () => {
+      const branchName = buildWorkItemBranchName(props.projectIdentifier, issue.sequence_id, issue.name);
+      const gitCommand = `git checkout -b ${branchName}`;
+      try {
+        await copyTextToClipboard(gitCommand);
+        setToast({
+          type: TOAST_TYPE.SUCCESS,
+          title: t("common.success"),
+          message: t("issue.create_branch.copied"),
+        });
+      } catch (_error) {
+        setToast({
+          type: TOAST_TYPE.ERROR,
+          title: t("toast.error"),
+        });
+      }
+    },
+    shouldRender: !issue.archived_at,
+  });
+
   const createRemoveFromCycleMenuItem = (): TContextMenuItem => ({
     key: "remove-from-cycle",
     title: "Remove from cycle",
@@ -257,6 +282,7 @@ export const useMenuItemFactory = (props: MenuItemFactoryProps) => {
     createCopyMenuItem,
     createOpenInNewTabMenuItem,
     createCopyLinkMenuItem,
+    createCreateBranchMenuItem,
     createRemoveFromCycleMenuItem,
     createRemoveFromModuleMenuItem,
     createArchiveMenuItem,
@@ -287,6 +313,7 @@ export const useWorkItemDetailMenuItems = (props: MenuItemFactoryProps): TContex
 
   return useMemo(
     () => [
+      factory.createCreateBranchMenuItem(),
       factory.createCopyMenuItem(props.workspaceSlug),
       factory.createOpenInNewTabMenuItem(),
       factory.createArchiveMenuItem(),
