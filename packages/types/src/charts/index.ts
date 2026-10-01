@@ -84,6 +84,8 @@ export type TBarItem<T extends string> = {
 export type TBarChartProps<K extends string, T extends string> = TAxisChartProps<K, T> & {
   bars: TBarItem<T>[];
   barSize?: number;
+  /** Called when a bar segment is clicked; payload is the chart datum for that bar. */
+  onBarClick?: (payload: TChartData<K, T>) => void;
 };
 
 // ============================================================
