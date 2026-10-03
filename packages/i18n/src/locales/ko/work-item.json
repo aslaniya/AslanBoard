@@ -266,6 +266,13 @@
       "click_to_downvote": "클릭하여 비추천",
       "click_to_view_upvotes": "클릭하여 추천 목록 보기",
       "click_to_view_downvotes": "클릭하여 비추천 목록 보기"
+    },
+    "create_branch": {
+      "label": "브랜치 생성",
+      "title": "브랜치 생성",
+      "git_section": "Git으로 새 브랜치를 생성하고 체크아웃",
+      "copy_command": "명령 복사",
+      "copied": "브랜치 명령이 클립보드에 복사되었습니다"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "에픽 제목",
       "required": "에픽 제목이 필요합니다."
+    }
+  },
+  "work_log": {
+    "title": "작업 로그",
+    "time_tracking": "시간 추적",
+    "log_time": "시간 기록",
+    "edit": "작업 로그 편집",
+    "total_logged": "{duration} 기록됨",
+    "time_spent": "소요 시간",
+    "duration_hint": "w, d, h, m을 사용합니다 — 예: 2h 30m, 1d (8h), 1w (5d). 숫자만 입력하면 시간으로 처리됩니다.",
+    "date": "날짜",
+    "description": "작업 설명",
+    "description_placeholder": "어떤 작업을 하셨습니까?",
+    "validation": {
+      "invalid_duration": "2h 30m 형식으로 기간을 입력하십시오",
+      "too_long": "단일 항목은 1주(168h)를 초과할 수 없습니다"
+    },
+    "toast": {
+      "saved": "시간이 기록되었습니다",
+      "deleted": "작업 로그가 삭제되었습니다",
+      "save_failed": "작업 로그를 저장할 수 없습니다. 다시 시도하십시오.",
+      "delete_failed": "작업 로그를 삭제할 수 없습니다. 다시 시도하십시오."
     }
   }
 }

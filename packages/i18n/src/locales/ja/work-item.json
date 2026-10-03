@@ -266,6 +266,13 @@
       "click_to_downvote": "クリックして反対票を投じる",
       "click_to_view_upvotes": "クリックして賛成票を表示",
       "click_to_view_downvotes": "クリックして反対票を表示"
+    },
+    "create_branch": {
+      "label": "ブランチを作成",
+      "title": "ブランチを作成",
+      "git_section": "Git で新しいブランチを作成してチェックアウト",
+      "copy_command": "コマンドをコピー",
+      "copied": "ブランチのコマンドをクリップボードにコピーしました"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "エピックのタイトル",
       "required": "エピックのタイトルは必須です。"
+    }
+  },
+  "work_log": {
+    "title": "作業ログ",
+    "time_tracking": "時間管理",
+    "log_time": "作業時間を記録",
+    "edit": "作業ログを編集",
+    "total_logged": "記録済み：{duration}",
+    "time_spent": "作業時間",
+    "duration_hint": "w、d、h、m を使用します（例：2h 30m、1d（8h）、1w（5d））。数字のみの場合は時間として扱われます。",
+    "date": "日付",
+    "description": "作業内容",
+    "description_placeholder": "どのような作業をしましたか？",
+    "validation": {
+      "invalid_duration": "2h 30m のような形式で入力してください",
+      "too_long": "1 件の記録は 1 週間（168h）を超えることはできません"
+    },
+    "toast": {
+      "saved": "作業時間を記録しました",
+      "deleted": "作業ログを削除しました",
+      "save_failed": "作業ログを保存できませんでした。もう一度お試しください。",
+      "delete_failed": "作業ログを削除できませんでした。もう一度お試しください。"
     }
   }
 }

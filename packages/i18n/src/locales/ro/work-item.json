@@ -266,6 +266,13 @@
       "click_to_downvote": "Clic pentru a vota negativ",
       "click_to_view_upvotes": "Clic pentru a vedea voturile pozitive",
       "click_to_view_downvotes": "Clic pentru a vedea voturile negative"
+    },
+    "create_branch": {
+      "label": "Creați un branch",
+      "title": "Creați un branch",
+      "git_section": "Creați un branch nou cu Git și comutați pe el",
+      "copy_command": "Copiați comanda",
+      "copied": "Comanda pentru branch a fost copiată în clipboard"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Titlu sarcină majoră",
       "required": "Titlul sarcinii majore este obligatoriu."
+    }
+  },
+  "work_log": {
+    "title": "Jurnal de lucru",
+    "time_tracking": "Urmărirea timpului",
+    "log_time": "Înregistrați timpul",
+    "edit": "Editați jurnalul de lucru",
+    "total_logged": "{duration} înregistrat",
+    "time_spent": "Timp lucrat",
+    "duration_hint": "Folosiți w, d, h, m — de ex. 2h 30m, 1d (8h), 1w (5d). Un număr fără unitate înseamnă ore.",
+    "date": "Dată",
+    "description": "Descrierea lucrului",
+    "description_placeholder": "La ce ați lucrat?",
+    "validation": {
+      "invalid_duration": "Introduceți o durată precum 2h 30m",
+      "too_long": "O singură înregistrare nu poate depăși o săptămână (168h)"
+    },
+    "toast": {
+      "saved": "Timp înregistrat",
+      "deleted": "Înregistrare din jurnal ștearsă",
+      "save_failed": "Jurnalul de lucru nu a putut fi salvat. Vă rugăm să încercați din nou.",
+      "delete_failed": "Înregistrarea nu a putut fi ștearsă. Vă rugăm să încercați din nou."
     }
   }
 }
