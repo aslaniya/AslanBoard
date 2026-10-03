@@ -429,5 +429,27 @@
       "label": "Epic Title",
       "required": "Epic title is required."
     }
+  },
+  "work_log": {
+    "title": "Work log",
+    "time_tracking": "Time tracking",
+    "log_time": "Log time",
+    "edit": "Edit work log",
+    "total_logged": "{duration} logged",
+    "time_spent": "Time spent",
+    "duration_hint": "Use w, d, h, m — e.g. 2h 30m, 1d (8h), 1w (5d). A plain number means hours.",
+    "date": "Date",
+    "description": "Work description",
+    "description_placeholder": "What did you work on?",
+    "validation": {
+      "invalid_duration": "Enter a duration like 2h 30m",
+      "too_long": "A single entry can't exceed one week (168h)"
+    },
+    "toast": {
+      "saved": "Work logged",
+      "deleted": "Work log deleted",
+      "save_failed": "Could not save the work log. Please try again.",
+      "delete_failed": "Could not delete the work log. Please try again."
+    }
   }
 }

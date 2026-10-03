@@ -266,6 +266,13 @@
       "click_to_downvote": "Klicken zum Runterstimmen",
       "click_to_view_upvotes": "Klicken um Hochstimmen anzuzeigen",
       "click_to_view_downvotes": "Klicken um Runterstimmen anzuzeigen"
+    },
+    "create_branch": {
+      "label": "Branch erstellen",
+      "title": "Branch erstellen",
+      "git_section": "Neuen Branch mit Git erstellen und auschecken",
+      "copy_command": "Befehl kopieren",
+      "copied": "Branch-Befehl in die Zwischenablage kopiert"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Epic-Titel",
       "required": "Ein Titel für das Epic ist erforderlich."
+    }
+  },
+  "work_log": {
+    "title": "Arbeitsprotokoll",
+    "time_tracking": "Zeiterfassung",
+    "log_time": "Zeit erfassen",
+    "edit": "Arbeitsprotokoll bearbeiten",
+    "total_logged": "{duration} erfasst",
+    "time_spent": "Aufgewendete Zeit",
+    "duration_hint": "w, d, h, m verwenden – z. B. 2h 30m, 1d (8h), 1w (5d). Eine Zahl ohne Einheit steht für Stunden.",
+    "date": "Datum",
+    "description": "Arbeitsbeschreibung",
+    "description_placeholder": "Woran haben Sie gearbeitet?",
+    "validation": {
+      "invalid_duration": "Dauer im Format 2h 30m eingeben",
+      "too_long": "Ein einzelner Eintrag darf eine Woche (168h) nicht überschreiten"
+    },
+    "toast": {
+      "saved": "Arbeitszeit erfasst",
+      "deleted": "Arbeitsprotokoll gelöscht",
+      "save_failed": "Das Arbeitsprotokoll konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.",
+      "delete_failed": "Das Arbeitsprotokoll konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
     }
   }
 }

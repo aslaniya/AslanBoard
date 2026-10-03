@@ -266,6 +266,13 @@
       "click_to_downvote": "Nhấp để bỏ phiếu chống",
       "click_to_view_upvotes": "Nhấp để xem phiếu thuận",
       "click_to_view_downvotes": "Nhấp để xem phiếu chống"
+    },
+    "create_branch": {
+      "label": "Tạo nhánh",
+      "title": "Tạo nhánh",
+      "git_section": "Tạo và chuyển sang nhánh mới bằng Git",
+      "copy_command": "Sao chép lệnh",
+      "copied": "Đã sao chép lệnh tạo nhánh vào bộ nhớ tạm"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Tiêu đề sử thi",
       "required": "Tiêu đề sử thi là bắt buộc"
+    }
+  },
+  "work_log": {
+    "title": "Nhật ký công việc",
+    "time_tracking": "Theo dõi thời gian",
+    "log_time": "Ghi thời gian",
+    "edit": "Chỉnh sửa nhật ký công việc",
+    "total_logged": "Đã ghi {duration}",
+    "time_spent": "Thời gian đã dùng",
+    "duration_hint": "Dùng w, d, h, m — ví dụ: 2h 30m, 1d (8h), 1w (5d). Chỉ nhập số nghĩa là số giờ.",
+    "date": "Ngày",
+    "description": "Mô tả công việc",
+    "description_placeholder": "Bạn đã làm những việc gì?",
+    "validation": {
+      "invalid_duration": "Nhập thời lượng, ví dụ 2h 30m",
+      "too_long": "Một mục không được vượt quá một tuần (168h)"
+    },
+    "toast": {
+      "saved": "Đã ghi thời gian",
+      "deleted": "Đã xóa nhật ký công việc",
+      "save_failed": "Không thể lưu nhật ký công việc. Vui lòng thử lại.",
+      "delete_failed": "Không thể xóa nhật ký công việc. Vui lòng thử lại."
     }
   }
 }

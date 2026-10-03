@@ -266,6 +266,13 @@
       "click_to_downvote": "Klikněte pro hlasování dolů",
       "click_to_view_upvotes": "Klikněte pro zobrazení hlasů nahoru",
       "click_to_view_downvotes": "Klikněte pro zobrazení hlasů dolů"
+    },
+    "create_branch": {
+      "label": "Vytvořit větev",
+      "title": "Vytvořit větev",
+      "git_section": "Vytvořit novou větev v Gitu a přepnout se na ni",
+      "copy_command": "Kopírovat příkaz",
+      "copied": "Příkaz větve zkopírován do schránky"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Název epiku",
       "required": "Název epiku je povinný."
+    }
+  },
+  "work_log": {
+    "title": "Výkaz práce",
+    "time_tracking": "Sledování času",
+    "log_time": "Zapsat čas",
+    "edit": "Upravit záznam práce",
+    "total_logged": "Zapsáno: {duration}",
+    "time_spent": "Strávený čas",
+    "duration_hint": "Použijte w, d, h, m — např. 2h 30m, 1d (8h), 1w (5d). Samotné číslo znamená hodiny.",
+    "date": "Datum",
+    "description": "Popis práce",
+    "description_placeholder": "Na čem jste pracovali?",
+    "validation": {
+      "invalid_duration": "Zadejte dobu trvání, např. 2h 30m",
+      "too_long": "Jeden záznam nesmí přesáhnout týden (168h)"
+    },
+    "toast": {
+      "saved": "Čas zapsán",
+      "deleted": "Záznam práce smazán",
+      "save_failed": "Záznam práce se nepodařilo uložit. Zkuste to prosím znovu.",
+      "delete_failed": "Záznam práce se nepodařilo smazat. Zkuste to prosím znovu."
     }
   }
 }

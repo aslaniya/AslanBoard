@@ -266,6 +266,13 @@
       "click_to_downvote": "Clique para votar contra",
       "click_to_view_upvotes": "Clique para ver os votos a favor",
       "click_to_view_downvotes": "Clique para ver os votos contra"
+    },
+    "create_branch": {
+      "label": "Criar branch",
+      "title": "Criar branch",
+      "git_section": "Criar e fazer checkout de um novo branch com Git",
+      "copy_command": "Copiar comando",
+      "copied": "Comando do branch copiado para a área de transferência"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Título do Épico",
       "required": "O título do épico é obrigatório."
+    }
+  },
+  "work_log": {
+    "title": "Registro de trabalho",
+    "time_tracking": "Controle de tempo",
+    "log_time": "Registrar tempo",
+    "edit": "Editar registro de trabalho",
+    "total_logged": "{duration} registrado",
+    "time_spent": "Tempo gasto",
+    "duration_hint": "Use w, d, h, m — ex.: 2h 30m, 1d (8h), 1w (5d). Um número sozinho indica horas.",
+    "date": "Data",
+    "description": "Descrição do trabalho",
+    "description_placeholder": "No que você trabalhou?",
+    "validation": {
+      "invalid_duration": "Insira uma duração como 2h 30m",
+      "too_long": "Um único registro não pode exceder uma semana (168h)"
+    },
+    "toast": {
+      "saved": "Tempo registrado",
+      "deleted": "Registro de trabalho excluído",
+      "save_failed": "Não foi possível salvar o registro de trabalho. Tente novamente.",
+      "delete_failed": "Não foi possível excluir o registro de trabalho. Tente novamente."
     }
   }
 }

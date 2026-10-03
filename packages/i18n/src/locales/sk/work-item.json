@@ -266,6 +266,13 @@
       "click_to_downvote": "Kliknite pre hlasovanie dole",
       "click_to_view_upvotes": "Kliknite pre zobrazenie hlasov hore",
       "click_to_view_downvotes": "Kliknite pre zobrazenie hlasov dole"
+    },
+    "create_branch": {
+      "label": "Vytvoriť vetvu",
+      "title": "Vytvoriť vetvu",
+      "git_section": "Vytvoriť novú vetvu v Gite a prepnúť sa na ňu",
+      "copy_command": "Kopírovať príkaz",
+      "copied": "Príkaz vetvy skopírovaný do schránky"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Názov epiky",
       "required": "Názov epiky je povinný."
+    }
+  },
+  "work_log": {
+    "title": "Výkaz práce",
+    "time_tracking": "Sledovanie času",
+    "log_time": "Zapísať čas",
+    "edit": "Upraviť záznam práce",
+    "total_logged": "Zapísané: {duration}",
+    "time_spent": "Strávený čas",
+    "duration_hint": "Použite w, d, h, m — napr. 2h 30m, 1d (8h), 1w (5d). Samotné číslo znamená hodiny.",
+    "date": "Dátum",
+    "description": "Popis práce",
+    "description_placeholder": "Na čom ste pracovali?",
+    "validation": {
+      "invalid_duration": "Zadajte trvanie, napr. 2h 30m",
+      "too_long": "Jeden záznam nesmie presiahnuť týždeň (168h)"
+    },
+    "toast": {
+      "saved": "Čas zapísaný",
+      "deleted": "Záznam práce odstránený",
+      "save_failed": "Záznam práce sa nepodarilo uložiť. Skúste to znova.",
+      "delete_failed": "Záznam práce sa nepodarilo odstrániť. Skúste to znova."
     }
   }
 }

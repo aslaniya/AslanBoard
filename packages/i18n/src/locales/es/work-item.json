@@ -266,6 +266,13 @@
       "click_to_downvote": "Haz clic para votar en contra",
       "click_to_view_upvotes": "Haz clic para ver los votos a favor",
       "click_to_view_downvotes": "Haz clic para ver los votos en contra"
+    },
+    "create_branch": {
+      "label": "Crear rama",
+      "title": "Crear rama",
+      "git_section": "Crear y cambiar a una nueva rama con Git",
+      "copy_command": "Copiar comando",
+      "copied": "Comando de rama copiado al portapapeles"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Título del Epic",
       "required": "El título del epic es obligatorio."
+    }
+  },
+  "work_log": {
+    "title": "Registro de trabajo",
+    "time_tracking": "Control de tiempo",
+    "log_time": "Registrar tiempo",
+    "edit": "Editar registro de trabajo",
+    "total_logged": "{duration} registrado",
+    "time_spent": "Tiempo dedicado",
+    "duration_hint": "Use w, d, h, m — p. ej., 2h 30m, 1d (8h), 1w (5d). Un número solo indica horas.",
+    "date": "Fecha",
+    "description": "Descripción del trabajo",
+    "description_placeholder": "¿En qué trabajó?",
+    "validation": {
+      "invalid_duration": "Introduzca una duración como 2h 30m",
+      "too_long": "Una sola entrada no puede superar una semana (168h)"
+    },
+    "toast": {
+      "saved": "Tiempo registrado",
+      "deleted": "Registro de trabajo eliminado",
+      "save_failed": "No se pudo guardar el registro de trabajo. Inténtelo de nuevo.",
+      "delete_failed": "No se pudo eliminar el registro de trabajo. Inténtelo de nuevo."
     }
   }
 }
