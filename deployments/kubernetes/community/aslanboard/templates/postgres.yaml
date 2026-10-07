@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-data
+  labels:
+    app.kubernetes.io/name: aslanboard
+spec:
+  accessModes: ["ReadWriteOnce"]
+  storageClassName: {{ .Values.persistence.storageClass }}
+  resources:
+    requests:
+      storage: {{ .Values.persistence.postgres }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plane-db
+  labels:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: postgres
+spec:
+  selector:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: postgres
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: postgres
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plane-db
+  labels:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: postgres
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aslanboard
+      app.kubernetes.io/component: postgres
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aslanboard
+        app.kubernetes.io/component: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: {{ .Values.images.postgres }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          args: ["postgres", "-c", "max_connections=1000"]
+          ports:
+            - name: postgres
+              containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: {{ .Values.config.postgresUser | quote }}
+            - name: POSTGRES_DB
+              value: {{ .Values.config.postgresDb | quote }}
+            - name: PGDATA
+              value: {{ .Values.config.pgData | quote }}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.existingSecret }}
+                  key: POSTGRES_PASSWORD
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+          readinessProbe:
+            exec:
+              command: ["pg_isready", "-U", {{ .Values.config.postgresUser | quote }}, "-d", {{ .Values.config.postgresDb | quote }}]
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          {{- include "aslanboard.resources" . | nindent 10 }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: postgres-data

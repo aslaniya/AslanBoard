@@ -1,0 +1,96 @@
+{{- $backend := list
+  (dict "name" "api" "command" "./bin/docker-entrypoint-api.sh" "port" 8000)
+  (dict "name" "worker" "command" "./bin/docker-entrypoint-worker.sh")
+  (dict "name" "beat-worker" "command" "./bin/docker-entrypoint-beat.sh")
+-}}
+{{- range $backend }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name }}
+  labels:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: {{ .name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aslanboard
+      app.kubernetes.io/component: {{ .name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aslanboard
+        app.kubernetes.io/component: {{ .name }}
+    spec:
+      containers:
+        - name: {{ .name }}
+          image: {{ $.Values.images.backend }}
+          imagePullPolicy: {{ $.Values.images.pullPolicy }}
+          command: ["{{ .command }}"]
+          {{- with .port }}
+          ports:
+            - name: http
+              containerPort: {{ . }}
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          {{- end }}
+          {{- include "aslanboard.envFrom" $ | nindent 10 }}
+          {{- if and (eq .name "worker") $.Values.resources.worker }}
+          resources:
+            requests:
+              cpu: {{ $.Values.resources.requests.cpu }}
+              memory: {{ $.Values.resources.requests.memory }}
+            limits:
+              memory: {{ $.Values.resources.worker.limits.memory }}
+          {{- else }}
+          {{- include "aslanboard.resources" $ | nindent 10 }}
+          {{- end }}
+{{- if eq .name "api" }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+  labels:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: api
+spec:
+  selector:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: api
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+{{- end }}
+{{- end }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrator
+  labels:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: migrator
+spec:
+  backoffLimit: 10
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aslanboard
+        app.kubernetes.io/component: migrator
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrator
+          image: {{ .Values.images.backend }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          command: ["./bin/docker-entrypoint-migrator.sh"]
+          {{- include "aslanboard.envFrom" . | nindent 10 }}
+          {{- include "aslanboard.resources" . | nindent 10 }}

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: aslanboard
+description: AslanBoard on Kubernetes. Mirrors the Plane CE v1.4.2 compose stack running in the Gopalu Vagrant VM, including the custom frontend image.
+type: application
+version: 0.1.0
+appVersion: v1.4.2

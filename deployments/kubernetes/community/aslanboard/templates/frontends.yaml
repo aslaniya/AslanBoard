@@ -1,0 +1,58 @@
+{{- $frontends := list
+  (dict "name" "web" "image" .Values.images.web "port" 3000)
+  (dict "name" "space" "image" .Values.images.space "port" 3000)
+  (dict "name" "admin" "image" .Values.images.admin "port" 3000)
+  (dict "name" "live" "image" .Values.images.live "port" 3000)
+-}}
+{{- range $frontends }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .name }}
+  labels:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: {{ .name }}
+spec:
+  selector:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: {{ .name }}
+  ports:
+    - name: http
+      port: {{ .port }}
+      targetPort: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .name }}
+  labels:
+    app.kubernetes.io/name: aslanboard
+    app.kubernetes.io/component: {{ .name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aslanboard
+      app.kubernetes.io/component: {{ .name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aslanboard
+        app.kubernetes.io/component: {{ .name }}
+    spec:
+      containers:
+        - name: {{ .name }}
+          image: {{ .image }}
+          imagePullPolicy: {{ $.Values.images.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .port }}
+          {{- include "aslanboard.envFrom" $ | nindent 10 }}
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          {{- include "aslanboard.resources" $ | nindent 10 }}
+{{- end }}

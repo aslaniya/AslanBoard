@@ -1,0 +1,6 @@
+AslanBoard is installed in this namespace.
+
+HTTP is on host port {{ .Values.hostPort }}. The Vagrant VM stays on port 8070, and host nginx is unchanged.
+
+Open http://192.168.88.4:{{ .Values.hostPort }} to check this copy.
+Cut over only after this copy serves the restored data: point `/etc/nginx/sites-enabled/plane.conf` at 127.0.0.1:{{ .Values.hostPort }}, then stop the Vagrant VM.
