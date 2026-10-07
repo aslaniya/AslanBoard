@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { Paperclip } from "lucide-react";
+import { Clock, Paperclip } from "lucide-react";
 import { useTranslation } from "@plane/i18n";
 import { LinkIcon, ViewsIcon, RelationPropertyIcon } from "@plane/propel/icons";
 // plane imports
@@ -16,6 +16,7 @@ import { IssueLinksActionButton } from "./links";
 import { RelationActionButton } from "./relations";
 import { SubIssuesActionButton } from "./sub-issues";
 import { IssueDetailWidgetButton } from "./widget-button";
+import { LogTimeActionButton } from "./work-log";
 
 type Props = {
   workspaceSlug: string;
@@ -88,6 +89,21 @@ export function IssueDetailWidgetActionButtons(props: Props) {
           }
           disabled={disabled}
           issueServiceType={issueServiceType}
+        />
+      )}
+      {!hideWidgets?.includes("work-log") && (
+        <LogTimeActionButton
+          workspaceSlug={workspaceSlug}
+          projectId={projectId}
+          issueId={issueId}
+          customButton={
+            <IssueDetailWidgetButton
+              title={t("work_log.log_time")}
+              icon={<Clock className="h-3.5 w-3.5 flex-shrink-0" strokeWidth={2} />}
+              disabled={disabled}
+            />
+          }
+          disabled={disabled}
         />
       )}
     </div>

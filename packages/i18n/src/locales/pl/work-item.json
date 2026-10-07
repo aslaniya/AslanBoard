@@ -266,6 +266,13 @@
       "click_to_downvote": "Kliknij, aby zagłosować przeciw",
       "click_to_view_upvotes": "Kliknij, aby zobaczyć głosy za",
       "click_to_view_downvotes": "Kliknij, aby zobaczyć głosy przeciw"
+    },
+    "create_branch": {
+      "label": "Utwórz gałąź",
+      "title": "Utwórz gałąź",
+      "git_section": "Utwórz nową gałąź w Git i przełącz się na nią",
+      "copy_command": "Kopiuj polecenie",
+      "copied": "Polecenie gałęzi skopiowane do schowka"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Tytuł epiku",
       "required": "Tytuł epiku jest wymagany."
+    }
+  },
+  "work_log": {
+    "title": "Dziennik pracy",
+    "time_tracking": "Śledzenie czasu",
+    "log_time": "Zarejestruj czas",
+    "edit": "Edytuj wpis dziennika pracy",
+    "total_logged": "Zarejestrowano: {duration}",
+    "time_spent": "Poświęcony czas",
+    "duration_hint": "Dostępne jednostki: w, d, h, m — np. 2h 30m, 1d (8h), 1w (5d). Sama liczba oznacza godziny.",
+    "date": "Data",
+    "description": "Opis pracy",
+    "description_placeholder": "Opis wykonanej pracy",
+    "validation": {
+      "invalid_duration": "Wprowadź czas trwania, np. 2h 30m",
+      "too_long": "Pojedynczy wpis nie może przekraczać tygodnia (168h)"
+    },
+    "toast": {
+      "saved": "Czas zarejestrowany",
+      "deleted": "Wpis dziennika pracy usunięty",
+      "save_failed": "Nie udało się zapisać wpisu dziennika pracy. Spróbuj ponownie.",
+      "delete_failed": "Nie udało się usunąć wpisu dziennika pracy. Spróbuj ponownie."
     }
   }
 }

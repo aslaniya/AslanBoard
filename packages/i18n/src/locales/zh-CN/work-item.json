@@ -266,6 +266,13 @@
       "click_to_downvote": "点击反对",
       "click_to_view_upvotes": "点击查看赞成票",
       "click_to_view_downvotes": "点击查看反对票"
+    },
+    "create_branch": {
+      "label": "创建分支",
+      "title": "创建分支",
+      "git_section": "使用 Git 创建并切换到新分支",
+      "copy_command": "复制命令",
+      "copied": "分支命令已复制到剪贴板"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "史诗标题",
       "required": "史诗标题为必填项"
+    }
+  },
+  "work_log": {
+    "title": "工作日志",
+    "time_tracking": "时间跟踪",
+    "log_time": "记录工时",
+    "edit": "编辑工作日志",
+    "total_logged": "已记录 {duration}",
+    "time_spent": "耗时",
+    "duration_hint": "使用 w、d、h、m，例如 2h 30m、1d（8h）、1w（5d）。仅输入数字表示小时。",
+    "date": "日期",
+    "description": "工作描述",
+    "description_placeholder": "您做了哪些工作？",
+    "validation": {
+      "invalid_duration": "请输入时长，例如 2h 30m",
+      "too_long": "单条记录不能超过一周（168h）"
+    },
+    "toast": {
+      "saved": "工时已记录",
+      "deleted": "工作日志已删除",
+      "save_failed": "无法保存工作日志，请重试。",
+      "delete_failed": "无法删除工作日志，请重试。"
     }
   }
 }

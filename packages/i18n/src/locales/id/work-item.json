@@ -266,6 +266,13 @@
       "click_to_downvote": "Klik untuk memberi suara turun",
       "click_to_view_upvotes": "Klik untuk melihat suara naik",
       "click_to_view_downvotes": "Klik untuk melihat suara turun"
+    },
+    "create_branch": {
+      "label": "Buat branch",
+      "title": "Buat branch",
+      "git_section": "Buat dan checkout branch baru dengan Git",
+      "copy_command": "Salin perintah",
+      "copied": "Perintah branch disalin ke papan klip"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Judul Epik",
       "required": "Judul epik wajib diisi."
+    }
+  },
+  "work_log": {
+    "title": "Log kerja",
+    "time_tracking": "Pelacakan waktu",
+    "log_time": "Catat waktu",
+    "edit": "Edit log kerja",
+    "total_logged": "{duration} tercatat",
+    "time_spent": "Waktu yang digunakan",
+    "duration_hint": "Gunakan w, d, h, m — mis. 2h 30m, 1d (8h), 1w (5d). Angka saja berarti jam.",
+    "date": "Tanggal",
+    "description": "Deskripsi pekerjaan",
+    "description_placeholder": "Apa yang Anda kerjakan?",
+    "validation": {
+      "invalid_duration": "Masukkan durasi seperti 2h 30m",
+      "too_long": "Satu entri tidak boleh melebihi satu minggu (168h)"
+    },
+    "toast": {
+      "saved": "Waktu tercatat",
+      "deleted": "Log kerja dihapus",
+      "save_failed": "Log kerja tidak dapat disimpan. Silakan coba lagi.",
+      "delete_failed": "Log kerja tidak dapat dihapus. Silakan coba lagi."
     }
   }
 }

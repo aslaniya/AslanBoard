@@ -266,6 +266,13 @@
       "click_to_downvote": "Olumsuz oy vermek için tıklayın",
       "click_to_view_upvotes": "Olumlu oyları görüntülemek için tıklayın",
       "click_to_view_downvotes": "Olumsuz oyları görüntülemek için tıklayın"
+    },
+    "create_branch": {
+      "label": "Branch oluştur",
+      "title": "Branch oluştur",
+      "git_section": "Git ile yeni bir branch oluşturun ve ona geçin",
+      "copy_command": "Komutu kopyala",
+      "copied": "Branch komutu panoya kopyalandı"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Epik Başlığı",
       "required": "Epik başlığı gereklidir."
+    }
+  },
+  "work_log": {
+    "title": "İş kaydı",
+    "time_tracking": "Zaman takibi",
+    "log_time": "Zaman kaydet",
+    "edit": "İş kaydını düzenle",
+    "total_logged": "{duration} kaydedildi",
+    "time_spent": "Harcanan süre",
+    "duration_hint": "w, d, h, m kullanın — örn. 2h 30m, 1d (8h), 1w (5d). Yalnızca sayı girilirse saat olarak kabul edilir.",
+    "date": "Tarih",
+    "description": "İş açıklaması",
+    "description_placeholder": "Ne üzerinde çalıştınız?",
+    "validation": {
+      "invalid_duration": "2h 30m gibi bir süre girin",
+      "too_long": "Tek bir kayıt bir haftayı (168h) aşamaz"
+    },
+    "toast": {
+      "saved": "Süre kaydedildi",
+      "deleted": "İş kaydı silindi",
+      "save_failed": "İş kaydı kaydedilemedi. Lütfen tekrar deneyin.",
+      "delete_failed": "İş kaydı silinemedi. Lütfen tekrar deneyin."
     }
   }
 }

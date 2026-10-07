@@ -266,6 +266,13 @@
       "click_to_downvote": "Clicca per votare contro",
       "click_to_view_upvotes": "Clicca per vedere i voti a favore",
       "click_to_view_downvotes": "Clicca per vedere i voti contro"
+    },
+    "create_branch": {
+      "label": "Crea branch",
+      "title": "Crea branch",
+      "git_section": "Crea un nuovo branch con Git ed effettua il checkout",
+      "copy_command": "Copia comando",
+      "copied": "Comando del branch copiato negli appunti"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Titolo Epic",
       "required": "Il titolo dell'Epic è obbligatorio."
+    }
+  },
+  "work_log": {
+    "title": "Registro attività",
+    "time_tracking": "Monitoraggio del tempo",
+    "log_time": "Registra tempo",
+    "edit": "Modifica registro attività",
+    "total_logged": "{duration} registrati",
+    "time_spent": "Tempo impiegato",
+    "duration_hint": "Usi w, d, h, m — ad es. 2h 30m, 1d (8h), 1w (5d). Un numero senza unità indica le ore.",
+    "date": "Data",
+    "description": "Descrizione del lavoro",
+    "description_placeholder": "Su cosa ha lavorato?",
+    "validation": {
+      "invalid_duration": "Inserisca una durata come 2h 30m",
+      "too_long": "Una singola voce non può superare una settimana (168h)"
+    },
+    "toast": {
+      "saved": "Tempo registrato",
+      "deleted": "Voce del registro eliminata",
+      "save_failed": "Impossibile salvare il registro attività. Riprovi.",
+      "delete_failed": "Impossibile eliminare la voce del registro. Riprovi."
     }
   }
 }

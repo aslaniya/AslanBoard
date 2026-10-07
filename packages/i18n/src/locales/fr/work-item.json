@@ -266,6 +266,13 @@
       "click_to_downvote": "Cliquez pour voter contre",
       "click_to_view_upvotes": "Cliquez pour voir les votes pour",
       "click_to_view_downvotes": "Cliquez pour voir les votes contre"
+    },
+    "create_branch": {
+      "label": "Créer une branche",
+      "title": "Créer une branche",
+      "git_section": "Créer une nouvelle branche avec Git et basculer dessus",
+      "copy_command": "Copier la commande",
+      "copied": "Commande de branche copiée dans le presse-papiers"
     }
   },
   "sub_work_item": {
@@ -421,6 +428,28 @@
     "title": {
       "label": "Titre de l’Epic",
       "required": "Le titre de l’Epic est requis."
+    }
+  },
+  "work_log": {
+    "title": "Journal de travail",
+    "time_tracking": "Suivi du temps",
+    "log_time": "Enregistrer du temps",
+    "edit": "Modifier le journal de travail",
+    "total_logged": "Temps enregistré : {duration}",
+    "time_spent": "Temps passé",
+    "duration_hint": "Utilisez w, d, h, m — p. ex. 2h 30m, 1d (8h), 1w (5d). Un nombre seul correspond à des heures.",
+    "date": "Date",
+    "description": "Description du travail",
+    "description_placeholder": "Sur quoi avez-vous travaillé ?",
+    "validation": {
+      "invalid_duration": "Saisissez une durée comme 2h 30m",
+      "too_long": "Une entrée ne peut pas dépasser une semaine (168h)"
+    },
+    "toast": {
+      "saved": "Temps enregistré",
+      "deleted": "Entrée du journal supprimée",
+      "save_failed": "Impossible d’enregistrer le journal de travail. Veuillez réessayer.",
+      "delete_failed": "Impossible de supprimer l’entrée du journal. Veuillez réessayer."
     }
   }
 }
