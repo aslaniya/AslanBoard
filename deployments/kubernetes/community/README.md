@@ -19,7 +19,7 @@ The Vagrant VM in `/root/vagrant/Plane` is stopped. External traffic for `aslanb
 
 Images are imported into the node containerd from the VM (`imagePullPolicy: IfNotPresent`). The web image is not on Docker Hub.
 
-Secrets stay on the server. Build them from the VM `plane.env` and create `aslanboard-env` before install. The secret must define `POSTGRES_PASSWORD`, `RABBITMQ_PASSWORD`, `SECRET_KEY`, `LIVE_SERVER_SECRET_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, plus `DATABASE_URL` and `AMQP_URL` (those two are blank in `plane.env`; Compose fills them from the password defaults).
+Secrets stay on the server. `build-secret.py` turns the VM `plane.env` into the env file for `aslanboard-env`. It fills `DATABASE_URL` and `AMQP_URL`, which are blank in `plane.env` because Compose supplies them. Do not commit the generated file.
 
 ```bash
 kubectl create namespace aslanboard
