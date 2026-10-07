@@ -1,0 +1,75 @@
+# Kubernetes publishes HTTP on 8071. Host nginx terminates TLS and proxies the public site here.
+hostPort: 8071
+
+images:
+  web: aslanboard/plane-frontend:v1.4.2-aslan
+  space: makeplane/plane-space:v1.4.2
+  admin: makeplane/plane-admin:v1.4.2
+  live: makeplane/plane-live:v1.4.2
+  backend: makeplane/plane-backend:v1.4.2
+  proxy: makeplane/plane-proxy:v1.4.2
+  postgres: postgres:15.7-alpine
+  redis: valkey/valkey:7.2.11-alpine
+  rabbitmq: rabbitmq:3.13.6-management-alpine
+  # Docker Hub dropped minio/minio. This is the image the VM already runs.
+  minio: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+  pullPolicy: IfNotPresent
+
+# Created out of band from the VM plane.env. Do not commit secret values.
+existingSecret: aslanboard-env
+
+config:
+  appDomain: aslanboard.aslaniya.com
+  appRelease: v1.4.2
+  webUrl: https://aslanboard.aslaniya.com:8007
+  corsAllowedOrigins: https://aslanboard.aslaniya.com,https://aslanboard.aslaniya.com:8007,https://plane.aslaniya.com,http://192.168.88.4:8070,http://192.168.88.4:8071
+  listenHttpPort: "80"
+  listenHttpsPort: "443"
+  siteAddress: ":80"
+  apiBaseUrl: http://api:8000
+  pgHost: plane-db
+  pgDatabase: plane
+  postgresUser: plane
+  postgresDb: plane
+  postgresPort: "5432"
+  pgData: /var/lib/postgresql/data
+  redisHost: plane-redis
+  redisPort: "6379"
+  redisUrl: redis://plane-redis:6379/
+  rabbitmqHost: plane-mq
+  rabbitmqPort: "5672"
+  rabbitmqUser: plane
+  rabbitmqVhost: plane
+  debug: "0"
+  useMinio: "1"
+  awsRegion: ""
+  awsS3EndpointUrl: http://plane-minio:9000
+  awsS3BucketName: uploads
+  fileSizeLimit: "52428800"
+  gunicornWorkers: "1"
+  minioEndpointSsl: "0"
+  apiKeyRateLimit: 60/minute
+  authenticationRateLimit: 10/minute
+  trustedProxies: 0.0.0.0/0
+  certAcmeCa: https://acme-v02.api.letsencrypt.org/directory
+  certEmail: ""
+  certAcmeDns: ""
+  webhookAllowedIps: ""
+  webhookAllowedHosts: ""
+
+persistence:
+  storageClass: local-path
+  postgres: 10Gi
+  redis: 1Gi
+  rabbitmq: 2Gi
+  minio: 10Gi
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    memory: 1Gi
+  worker:
+    limits:
+      memory: 2Gi
